@@ -1,0 +1,14 @@
+[Unit]
+  Description=Process Exporter
+  Wants=network-online.target
+  After=network-online.target
+
+[Service]
+  User=process-exporter
+  Group=process-exporter
+  Type=simple
+  ExecStart=/usr/local/bin/process-exporter \
+  --config.path /etc/process-exporter/config.yml
+
+[Install]
+WantedBy=multi-user.target

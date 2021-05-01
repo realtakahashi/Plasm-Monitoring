@@ -115,20 +115,20 @@ echo "#Grafana was installed."
 echo "#####"
 
 echo "#copy configurations."
-cp -p ./prometheus.yml /etc/prometheus/prometheus.yml
-cp -p ./rules.yml /etc/prometheus/rules.yml
-cp -p ./onfig.yml /etc/process-exporter/config.yml
-cp -p ./alertmanager.yml /etc/alertmanager/alertmanager.yml
+cp -p ./config/prometheus.yml /etc/prometheus/prometheus.yml
+cp -p ./config/rules.yml /etc/prometheus/rules.yml
+cp -p ./config/config.yml /etc/process-exporter/config.yml
+cp -p ./config/alertmanager.yml /etc/alertmanager/alertmanager.yml
 
 echo "#check files..."
 promtool check rules /etc/prometheus/rules.yml
 promtool check config /etc/prometheus/prometheus.yml
 
 echo "#copy service files."
-cp -p ./prometheus.service /etc/systemd/system/prometheus.service
-cp -p ./node_exporter.service /etc/systemd/system/node_exporter.service
-cp -p ./process-exporter.service /etc/systemd/system/process-exporter.service
-cp -p ./alertmanager.service /etc/systemd/system/alertmanager.service
+cp -p ./config/prometheus.service /etc/systemd/system/prometheus.service
+cp -p ./config/node_exporter.service /etc/systemd/system/node_exporter.service
+cp -p ./config/process-exporter.service /etc/systemd/system/process-exporter.service
+cp -p ./config/alertmanager.service /etc/systemd/system/alertmanager.service
 
 echo "#Launch and Active Services"
 systemctl daemon-reload
